@@ -1,0 +1,40 @@
+<div class="animate-fly-in-bottom max-w-screen-md mx-auto">
+  <h1 class="text-2xl mb-4">Login</h1>
+  <p class="mb-4">The client side is using angular reactive forms.</p>
+  <p class="mb-4">
+    For the backend we are using cookie based authentication on our .net web
+    api. The web api will be using aspnet identity for users.
+  </p>
+  <form
+    class="flex flex-col gap-4 max-w-sm mx-auto mt-16"
+    [formGroup]="loginForm"
+  >
+    <h1 class="text-xl mb-4">Please provide a username and password</h1>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <mat-checkbox formControlName="persist">Persist Session</mat-checkbox>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onLoginClicked()"
+        [disabled]="isLoading"
+      >
+        @if (!isLoading) { Login } @else {
+
+        <mat-spinner [diameter]="20"> </mat-spinner>
+
+        }
+      </button>
+    </div>
+  </form>
+</div>

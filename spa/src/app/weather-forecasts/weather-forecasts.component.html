@@ -1,0 +1,24 @@
+<div class="animate-fly-in-bottom mx-auto max-w-screen-md">
+  <h1 class="mb-4 text-2xl">Basic http fetching</h1>
+  <p class="mb-2">
+    Here we have some basic http fetching using the weather forecast basic
+    endpoints from the example weather forecast .net 7 web api.
+  </p>
+  <p class="mb-2">
+    This is not a paged implementation and does not hit a database.
+  </p>
+
+  <mat-list class="max-w-md mx-auto">
+    @for (forecast of weatherForecasts(); track forecast) {
+    <mat-list-item>
+      <mat-icon matListItemAvatar color="primary">sunny</mat-icon>
+      <span matListItemTitle>{{ forecast.summary }}</span>
+      <div matListItemLine>
+        <span>{{ forecast.temperatureC }}C</span> /
+        <span>{{ forecast.temperatureF }}F</span>
+      </div>
+      <span matListItemMeta>{{ forecast.date | date }}</span>
+    </mat-list-item>
+    }
+  </mat-list>
+</div>

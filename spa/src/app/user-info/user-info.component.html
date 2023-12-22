@@ -1,0 +1,9 @@
+<div class="animate-fly-in-bottom mx-auto max-w-screen-md">
+  <h1 class="text-2xl mb-4">User Info</h1>
+  <p class="mb-8">Shows user info assuming we are logged in.</p>
+  @for (claim of userInfo; track claim) {
+  <p class="mb-2">
+    {{ claim }}
+  </p>
+  }
+</div>

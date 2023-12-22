@@ -1,0 +1,36 @@
+<div class="max-w-screen-md mx-auto animate-fly-in-bottom">
+  <h1>Register</h1>
+  <p class="mb-8">
+    Create a user and save it to the in-memory database of the API.
+  </p>
+  <div class="max-w-sm mx-auto">
+    <form class="flex flex-col gap-1" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+    </form>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmitClicked()"
+      [disabled]="isLoading"
+    >
+      @if (!isLoading) { Create User } @else {
+
+      <mat-spinner [diameter]="20"> </mat-spinner>
+
+      }
+    </button>
+  </div>
+</div>
