@@ -6,23 +6,25 @@
   <div class="flex-1"></div>
   @if (isLoggedIn$ | async) {
 
-    <button mat-icon-button [routerLink]="['userInfo']">
-      <mat-icon>account_circle</mat-icon>
-    </button>
+  <button mat-icon-button [routerLink]="['userInfo']">
+    <mat-icon>account_circle</mat-icon>
+  </button>
 
-    <button mat-icon-button (click)="onLogoutClicked()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  
-}
+  <button mat-icon-button (click)="onLogoutClicked()">
+    <mat-icon>logout</mat-icon>
+  </button>
+
+  }
 </mat-toolbar>
 <div class="p-4">
   <router-outlet></router-outlet>
 </div>
 <mat-menu #menu="matMenu">
-  <a mat-menu-item [routerLink]="[RouteNames.Login]">Login</a>
-  <a mat-menu-item href="/auth/login?returnUrl=http://localhost:4200">Identity Login</a>
-  <a mat-menu-item [routerLink]="[RouteNames.WeatherForecast]">Basic Http Fetching</a>
+  <a mat-menu-item href="/auth/login">Identity Login</a>
+  <a mat-menu-item href="/auth/logout">Identity Logoff</a>
+  <a mat-menu-item [routerLink]="[RouteNames.WeatherForecast]"
+    >Basic Http Fetching</a
+  >
   <a mat-menu-item [routerLink]="[RouteNames.Posts]">Posts</a>
   <a mat-menu-item [routerLink]="[RouteNames.Register]">Register</a>
 </mat-menu>

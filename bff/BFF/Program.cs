@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Serilog;
 using Yarp.ReverseProxy.Transforms;
@@ -94,10 +96,14 @@ try
 
     app.UseAuthorization();
 
-    app.MapControllerRoute(name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+    app.MapDefaultControllerRoute();
 
     app.MapReverseProxy();
+
+    app.Map("/", (HttpResponse x) =>
+    {
+        x.Redirect(app.Configuration.GetValue<string>("RootRedirect"));
+    });
 
     app.Run();
 }
