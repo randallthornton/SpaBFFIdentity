@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Serilog;
 using Yarp.ReverseProxy.Transforms;
@@ -53,8 +51,9 @@ try
             opts.Authority = builder.Configuration["Identity:Authority"];
             opts.ClientId = builder.Configuration["Identity:ClientId"];
             opts.ClientSecret = builder.Configuration["Identity:ClientSecret"];
-            opts.ResponseType = OpenIdConnectResponseType.CodeIdToken;
+            opts.ResponseType = OpenIdConnectResponseType.Code;
             opts.ResponseMode = OpenIdConnectResponseMode.FormPost;
+            opts.UsePkce = true;
 
             opts.Scope.Add("openid");
             opts.Scope.Add("offline_access");

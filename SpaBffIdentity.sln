@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BFF", "bff\BFF\BFF.csproj",
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "spa", "spa\spa.esproj", "{7BDC0243-4D40-4858-A48A-DFFF8335DFAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer\IdentityServer.csproj", "{4557BD62-E9D2-4203-8017-9E8333F3AA91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{7BDC0243-4D40-4858-A48A-DFFF8335DFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDC0243-4D40-4858-A48A-DFFF8335DFAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BDC0243-4D40-4858-A48A-DFFF8335DFAE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4557BD62-E9D2-4203-8017-9E8333F3AA91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4557BD62-E9D2-4203-8017-9E8333F3AA91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4557BD62-E9D2-4203-8017-9E8333F3AA91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4557BD62-E9D2-4203-8017-9E8333F3AA91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
