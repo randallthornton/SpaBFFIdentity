@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -49,7 +50,7 @@ try
     var summaries = new[]
     {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    };
 
     app.MapGet("/api/weatherforecast", () =>
     {
@@ -66,6 +67,22 @@ try
     .WithName("GetWeatherForecast")
     .WithOpenApi()
     .RequireAuthorization();
+
+    app.MapGet("/api/auth/userInfo", async (context) =>
+    {
+        if (context.User.Identity.IsAuthenticated)
+        {
+            var claims = ((ClaimsIdentity)context.User.Identity).Claims.Select(c =>
+                new { type = c.Type, value = c.Value })
+                .ToArray();
+
+            await context.Response.WriteAsJsonAsync(new { isAuthenticated = true, claims });
+        }
+        else
+        {
+            await context.Response.WriteAsJsonAsync(new { isAuthenticated = false });
+        }
+    });
 
     app.Run();
 }

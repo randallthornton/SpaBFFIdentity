@@ -26,6 +26,8 @@ public class AuthController : Controller
 		});
 	}
 
+	[HttpGet]
+	[Route("/api/auth/userInfo")]
 	public ActionResult GetUser()
 	{
 		if (User.Identity.IsAuthenticated)

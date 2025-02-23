@@ -45,6 +45,8 @@ try
             opts.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             opts.Cookie.SameSite = SameSiteMode.Strict;
             opts.Cookie.HttpOnly = true;
+            opts.LoginPath = "/auth/login";
+            opts.LogoutPath = "/auth/logout";
         })
         .AddOpenIdConnect("oidc", opts =>
         {
@@ -71,6 +73,17 @@ try
         opts.AddPolicy("RequireAuthenticatedUserPolicy", policy =>
         {
             policy.RequireAuthenticatedUser();
+        });
+    });
+
+    builder.Services.AddCors(opts =>
+    {
+        opts.AddDefaultPolicy(policy =>
+        {
+            policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>())
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
         });
     });
 
@@ -101,8 +114,11 @@ try
 
     app.Map("/", (HttpResponse x) =>
     {
+        x.Headers.AccessControlAllowOrigin = "*";
         x.Redirect(app.Configuration.GetValue<string>("RootRedirect"));
     });
+
+    app.UseCors();
 
     app.Run();
 }
